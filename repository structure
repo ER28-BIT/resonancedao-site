@@ -1,0 +1,15 @@
+resonancedao-site/
+  public/
+    assets/
+      resonance-logo.png
+      green-energy-proof.gif
+  src/
+    App.jsx
+    main.jsx
+    index.css
+  .github/
+    workflows/
+      deploy.yml
+  index.html
+  package.json
+  vite.config.js
