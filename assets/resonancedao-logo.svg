@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200" role="img" aria-label="ResonanceDAO horizontal logo">
+  <defs>
+    <radialGradient id="bg" cx="35%" cy="42%" r="75%">
+      <stop offset="0" stop-color="#07152a"/>
+      <stop offset="1" stop-color="#02051a"/>
+    </radialGradient>
+    <linearGradient id="aqua" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#22f4e8"/>
+      <stop offset=".55" stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#7dd3fc"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="200" fill="url(#bg)"/>
+  <g opacity=".18">
+    <circle cx="138" cy="95" r="92" fill="none" stroke="#0ea5e9" stroke-width="1"/>
+    <circle cx="138" cy="95" r="62" fill="none" stroke="#22d3ee" stroke-width="1"/>
+  </g>
+  <g transform="translate(52 42)" filter="url(#glow)" fill="none" stroke="url(#aqua)" stroke-linecap="round">
+    <path d="M15 55 C45 4,117 4,136 43 C154 82,86 109,40 87 C0 68,30 31,83 33" stroke-width="3.2" opacity=".95"/>
+    <path d="M55 54 C82 23,128 31,132 61 C136 94,78 105,43 82 C23 68,34 46,68 43" stroke-width="3" opacity=".72"/>
+    <path d="M85 50 C104 48,117 58,111 73 C104 92,63 91,52 76" stroke-width="4" opacity=".95"/>
+    <circle cx="75" cy="50" r="8" fill="#67e8f9" stroke="none"/>
+    <circle cx="133" cy="42" r="3.8" fill="#22f4e8" stroke="none"/>
+    <circle cx="132" cy="100" r="4.2" fill="#22f4e8" stroke="none"/>
+  </g>
+  <text x="185" y="113" fill="url(#aqua)" font-family="Inter, Arial, Helvetica, sans-serif" font-size="49" letter-spacing="8" font-weight="600">ResonanceDAO</text>
+</svg>
