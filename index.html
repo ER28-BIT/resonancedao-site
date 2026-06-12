@@ -1,8 +1,1147 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Green Energy Verification | ResonanceDAO</title>
-<meta name="description" content="Green Energy Verification by ResonanceDAO and Measure Twice: renewable-integrated hydrogen storage, verified energy data, and accountable project reporting.">
-<style>
-:root{--bg:#07130f;--panel:#10231b;--panel2:#0
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Green Energy Verification | ResonanceDAO</title>
+  <meta name="description" content="Green Energy Verification for renewable-integrated hydrogen infrastructure, project monitoring, reporting, and funding accountability." />
+
+  <style>
+    :root{
+      --bg:#06110d;
+      --bg2:#0b1f18;
+      --card:#10281f;
+      --card2:#132f26;
+      --line:rgba(255,255,255,.12);
+      --text:#f3fff8;
+      --muted:#b9d3c8;
+      --soft:#e4fff2;
+      --green:#2ee58f;
+      --green2:#9cffc9;
+      --blue:#69d7ff;
+      --gold:#f6d36b;
+      --purple:#d8b4fe;
+      --shadow:0 24px 80px rgba(0,0,0,.35);
+      --radius:26px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(46,229,143,.22), transparent 38%),
+        radial-gradient(circle at 84% 12%, rgba(105,215,255,.16), transparent 34%),
+        radial-gradient(circle at 50% 95%, rgba(216,180,254,.12), transparent 32%),
+        linear-gradient(180deg,#04100b 0%,#071611 44%,#07120f 100%);
+      min-height:100vh;
+      line-height:1.55;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(18px);
+      background:rgba(4,16,11,.78);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:-.02em;
+    }
+
+    .brandMark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:#052013;
+      background:linear-gradient(135deg,var(--green),var(--green2),var(--blue));
+      box-shadow:0 0 28px rgba(46,229,143,.35);
+      font-weight:900;
+    }
+
+    .navLinks{
+      display:flex;
+      gap:20px;
+      color:var(--muted);
+      font-size:14px;
+      align-items:center;
+    }
+
+    .navLinks a:hover{color:var(--text)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:13px 18px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      font-weight:700;
+      font-size:14px;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+
+    .btn.primary{
+      color:#032015;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      border-color:transparent;
+      box-shadow:0 18px 45px rgba(46,229,143,.18);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.05);
+      color:var(--soft);
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    main{overflow:hidden}
+
+    .hero{
+      padding:92px 0 72px;
+      position:relative;
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:46px;
+      align-items:center;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--green2);
+      background:rgba(46,229,143,.08);
+      border:1px solid rgba(46,229,143,.26);
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3,p{margin-top:0}
+    h1{
+      font-size:clamp(44px,6vw,82px);
+      line-height:.95;
+      letter-spacing:-.07em;
+      margin-bottom:24px;
+    }
+
+    h2{
+      font-size:clamp(32px,4.2vw,56px);
+      line-height:1;
+      letter-spacing:-.05em;
+      margin-bottom:18px;
+    }
+
+    h3{
+      font-size:22px;
+      line-height:1.15;
+      letter-spacing:-.02em;
+      margin-bottom:10px;
+    }
+
+    .lead{
+      font-size:clamp(18px,2vw,22px);
+      color:var(--muted);
+      margin-bottom:26px;
+    }
+
+    .hero p:not(.lead){color:var(--muted)}
+
+    .buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .heroCard{
+      min-height:520px;
+      border-radius:38px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03)),
+        radial-gradient(circle at 50% 16%,rgba(46,229,143,.34),transparent 35%),
+        rgba(8,29,22,.72);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      padding:28px;
+    }
+
+    .orbit{
+      position:absolute;
+      inset:44px;
+      border-radius:50%;
+      border:1px solid rgba(156,255,201,.22);
+      animation:spin 26s linear infinite;
+    }
+
+    .orbit:before,
+    .orbit:after{
+      content:"";
+      position:absolute;
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 24px var(--green);
+    }
+
+    .orbit:before{top:18px;left:50%}
+    .orbit:after{bottom:34px;right:18%}
+
+    .centerH2{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      z-index:2;
+    }
+
+    .centerH2 .bubble{
+      width:210px;
+      height:210px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.28),rgba(46,229,143,.28),rgba(5,35,23,.92));
+      border:1px solid rgba(255,255,255,.2);
+      box-shadow:0 0 100px rgba(46,229,143,.3);
+      font-size:54px;
+      font-weight:900;
+      letter-spacing:-.06em;
+    }
+
+    .metricStrip{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      z-index:4;
+    }
+
+    .metric{
+      padding:15px;
+      border-radius:18px;
+      background:rgba(2,16,10,.72);
+      border:1px solid var(--line);
+    }
+
+    .metric span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:5px;
+    }
+
+    .metric strong{
+      display:block;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.25;
+    }
+
+    section{padding:84px 0}
+    .band{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .sectionLabel{
+      color:var(--green2);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:32px;
+    }
+
+    .card{
+      padding:26px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+      border:1px solid var(--line);
+      box-shadow:0 20px 50px rgba(0,0,0,.14);
+    }
+
+    .card .icon,
+    .productItem .icon,
+    .top .icon{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      color:#06110d;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .card p{color:var(--muted);margin-bottom:0}
+
+    .productWrap{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .productList{
+      display:grid;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .productItem{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding:20px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+    }
+
+    .productItem.active{
+      background:rgba(46,229,143,.08);
+      border-color:rgba(46,229,143,.32);
+    }
+
+    .productItem .icon{margin:0;flex:0 0 auto}
+    .eyebrow{
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:900;
+      margin-bottom:4px;
+    }
+
+    .productItem h3{margin:0}
+
+    .productPanel{
+      padding:30px;
+      border-radius:32px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035)),
+        rgba(13,42,31,.65);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .top{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:16px;
+    }
+
+    .top .icon{margin:0}
+    .productPanel p{color:var(--muted)}
+
+    .feature{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px 0;
+      color:var(--soft);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .feature:last-child{border-bottom:0}
+
+    .check{
+      color:#06110d;
+      background:var(--green);
+      min-width:22px;
+      height:22px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      font-size:13px;
+      margin-top:1px;
+    }
+
+    .pilot{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .pilotText p{color:var(--muted)}
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+
+    .tag{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(156,255,201,.22);
+      color:var(--green2);
+      background:rgba(46,229,143,.06);
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .energyFrame{
+      position:relative;
+      min-height:500px;
+      border-radius:34px;
+      padding:24px;
+      background:
+        radial-gradient(circle at 20% 10%,rgba(246,211,107,.22),transparent 26%),
+        radial-gradient(circle at 82% 22%,rgba(105,215,255,.2),transparent 25%),
+        linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+      border:1px solid var(--line);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .energyFrame:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+      transform:translateX(-100%);
+      animation:sweep 5s ease-in-out infinite;
+    }
+
+    .sourceGrid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .source{
+      min-height:135px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(3,20,14,.62);
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .source strong{
+      display:block;
+      margin-top:10px;
+      font-size:14px;
+      letter-spacing:.02em;
+    }
+
+    .turbine{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      border:4px solid var(--green2);
+      position:relative;
+      animation:spin 2.6s linear infinite;
+    }
+
+    .turbine:before,
+    .turbine:after{
+      content:"";
+      position:absolute;
+      background:var(--green2);
+      left:18px;
+      top:-18px;
+      width:8px;
+      height:82px;
+      border-radius:999px;
+      transform-origin:center 41px;
+    }
+
+    .turbine:after{transform:rotate(90deg)}
+
+    .sun{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 34px rgba(246,211,107,.72);
+      animation:pulse 2.2s ease-in-out infinite;
+    }
+
+    .waveIcon{
+      width:78px;
+      height:44px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .waveIcon:before,
+    .waveIcon:after{
+      content:"";
+      position:absolute;
+      left:-20px;
+      width:120px;
+      height:44px;
+      border:5px solid var(--blue);
+      border-color:var(--blue) transparent transparent transparent;
+      border-radius:50%;
+      animation:wave 2.4s ease-in-out infinite;
+    }
+
+    .waveIcon:after{
+      top:16px;
+      opacity:.6;
+      animation-delay:.4s;
+    }
+
+    .convergence{
+      position:relative;
+      z-index:2;
+      height:100px;
+      display:grid;
+      place-items:center;
+    }
+
+    .stream{
+      position:absolute;
+      height:3px;
+      background:linear-gradient(90deg,transparent,var(--green2),transparent);
+      border-radius:999px;
+      opacity:.85;
+      animation:flow 1.8s linear infinite;
+    }
+
+    .stream.s1{width:48%;left:8%;top:16px;transform:rotate(18deg)}
+    .stream.s2{width:52%;left:24%;top:42px}
+    .stream.s3{width:48%;right:8%;top:70px;transform:rotate(-18deg)}
+
+    .storage{
+      position:relative;
+      z-index:3;
+      width:210px;
+      height:92px;
+      border-radius:999px;
+      border:1px solid rgba(156,255,201,.38);
+      background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.22),rgba(46,229,143,.18),rgba(8,38,27,.9));
+      display:grid;
+      place-items:center;
+      text-align:center;
+      box-shadow:0 0 50px rgba(46,229,143,.2);
+      animation:storagePulse 2.8s ease-in-out infinite;
+    }
+
+    .storage strong{font-size:18px}
+    .storage span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+
+    .dashCard{
+      position:relative;
+      z-index:2;
+      margin-top:16px;
+      border-radius:26px;
+      padding:20px;
+      background:rgba(2,16,10,.72);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .dashTitle{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      color:var(--soft);
+      font-weight:900;
+      margin-bottom:16px;
+    }
+
+    .dashGrid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+    }
+
+    .dashMetric{
+      min-height:78px;
+      border-radius:16px;
+      padding:12px;
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .dashMetric span{
+      display:block;
+      color:var(--muted);
+      font-size:11px;
+      margin-bottom:8px;
+    }
+
+    .dashMetric strong{
+      display:block;
+      color:var(--green2);
+      font-size:13px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:32px;
+    }
+
+    .flowCard{
+      position:relative;
+      padding:26px;
+      min-height:220px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+      border:1px solid var(--line);
+    }
+
+    .num{
+      position:absolute;
+      top:18px;
+      right:20px;
+      color:rgba(255,255,255,.22);
+      font-size:34px;
+      font-weight:900;
+    }
+
+    .flowIcon{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:rgba(46,229,143,.12);
+      color:var(--green2);
+      border:1px solid rgba(46,229,143,.24);
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    .flowCard p{color:var(--muted);margin-bottom:0}
+
+    .partnerBox{
+      border-radius:36px;
+      padding:42px;
+      background:
+        radial-gradient(circle at 90% 10%,rgba(46,229,143,.18),transparent 30%),
+        linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+      border:1px solid var(--line);
+    }
+
+    .partnerGrid{
+      display:grid;
+      grid-template-columns:1fr .95fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .miniGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .mini{
+      padding:18px;
+      border-radius:20px;
+      background:rgba(2,16,10,.54);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--soft);
+      font-weight:800;
+    }
+
+    .walletVisual{
+      margin:20px 0 18px;
+      padding:24px;
+      border-radius:28px;
+      background:rgba(2,16,10,.58);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .timeline{
+      display:grid;
+      gap:12px;
+    }
+
+    .timelineStep{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:14px;
+      align-items:start;
+      padding:14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .timelineStep b{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:#06110d;
+      background:linear-gradient(135deg,var(--purple),var(--green2));
+    }
+
+    .timelineStep strong{display:block;margin-bottom:3px}
+    .timelineStep span{display:block;color:var(--muted);font-size:14px}
+
+    .cta{
+      text-align:center;
+      max-width:860px;
+    }
+
+    footer{
+      padding:28px 0 46px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      font-size:14px;
+    }
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes pulse{50%{transform:scale(1.08);box-shadow:0 0 50px rgba(246,211,107,.95)}}
+    @keyframes wave{50%{transform:translateX(12px) translateY(3px)}}
+    @keyframes sweep{50%{transform:translateX(100%)}100%{transform:translateX(100%)}}
+    @keyframes flow{from{background-position:-120px 0}to{background-position:120px 0}}
+    @keyframes storagePulse{50%{box-shadow:0 0 78px rgba(46,229,143,.34);transform:scale(1.02)}}
+
+    @media (max-width:940px){
+      .nav{height:auto;padding:16px 0;align-items:flex-start}
+      .navLinks{display:none}
+      .heroGrid,
+      .productWrap,
+      .pilot,
+      .partnerGrid{
+        grid-template-columns:1fr;
+      }
+      .grid3,
+      .flow,
+      .dashGrid{
+        grid-template-columns:1fr 1fr;
+      }
+      .heroCard{min-height:440px}
+    }
+
+    @media (max-width:640px){
+      .container{width:min(100% - 26px,var(--max))}
+      .hero{padding:60px 0 46px}
+      section{padding:58px 0}
+      .buttons{flex-direction:column}
+      .btn{width:100%}
+      .grid3,
+      .flow,
+      .sourceGrid,
+      .dashGrid,
+      .miniGrid,
+      .metricStrip{
+        grid-template-columns:1fr;
+      }
+      .metricStrip{position:relative;left:auto;right:auto;bottom:auto;margin-top:250px}
+      .centerH2 .bubble{width:170px;height:170px;font-size:44px}
+      .heroCard{min-height:560px}
+      .partnerBox{padding:24px}
+      h1{letter-spacing:-.05em}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="ResonanceDAO Green Energy Verification">
+        <span class="brandMark">R</span>
+        <span>ResonanceDAO<br><span style="color:var(--muted);font-weight:700;font-size:13px;">Green Energy Verification</span></span>
+      </a>
+
+      <nav class="navLinks" aria-label="Primary navigation">
+        <a href="#why">Why it matters</a>
+        <a href="#products">Verification layer</a>
+        <a href="#pilot">Pilot</a>
+        <a href="#how">How it works</a>
+        <a href="#funding">Funding accountability</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn primary" href="mailto:info@measuretwice.xyz">Start a conversation →</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container heroGrid">
+        <div>
+          <div class="pill">Renewable-integrated hydrogen infrastructure</div>
+          <h1>Green Energy Verification for productive clean-energy systems.</h1>
+          <p class="lead">ResonanceDAO helps make renewable-energy input, hydrogen output, uptime, avoided emissions, and project performance legible to funders, operators, governments, and communities.</p>
+          <p>Our focus is practical infrastructure accountability: measuring what clean-energy assets produce, verifying the operational record, and turning that record into reporting that supports resilient financing and implementation.</p>
+
+          <div class="buttons">
+            <a class="btn primary" href="#pilot">View pilot concept →</a>
+            <a class="btn secondary" href="#funding">See accountability layer</a>
+          </div>
+        </div>
+
+        <div class="heroCard" aria-label="Hydrogen verification visual">
+          <div class="orbit"></div>
+          <div class="centerH2">
+            <div class="bubble">H₂</div>
+          </div>
+
+          <div class="metricStrip">
+            <div class="metric">
+              <span>Input</span>
+              <strong>Renewable energy</strong>
+            </div>
+            <div class="metric">
+              <span>Output</span>
+              <strong>Hydrogen production</strong>
+            </div>
+            <div class="metric">
+              <span>Record</span>
+              <strong>Verified reporting</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="band">
+      <div class="container">
+        <div class="sectionLabel">Why it matters</div>
+        <h2>Storage planning becomes stronger when renewable generation and verification are designed together.</h2>
+        <p class="lead">Battery storage, hydrogen storage, and renewable generation each become more financeable when project stakeholders can trust a shared operating record.</p>
+
+        <div class="grid3">
+          <article class="card">
+            <div class="icon">☀</div>
+            <h3>Renewable input visibility</h3>
+            <p>Capture and organize data from wind, solar, wave, and other renewable-energy sources feeding productive infrastructure.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">H₂</div>
+            <h3>Hydrogen output tracking</h3>
+            <p>Connect electrolyzer-linked production data with uptime, system activity, storage behavior, and operating assumptions.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">✓</div>
+            <h3>Verification before scale</h3>
+            <p>Create a consistent record for funders, public-sector partners, operators, communities, and implementation teams.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container productWrap">
+        <div>
+          <div class="sectionLabel">Verification layer</div>
+          <h2>Green Energy Verification as the operating record for clean-energy infrastructure.</h2>
+          <p class="lead">The verification layer documents what infrastructure is doing in the field before those outcomes are used for financing, reporting, settlement, or public accountability.</p>
+
+          <div class="productList">
+            <div class="productItem active">
+              <div class="icon">H₂</div>
+              <div>
+                <div class="eyebrow">Proof of Productive Infrastructure</div>
+                <h3>Green Energy Verification</h3>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="icon">↗</div>
+              <div>
+                <div class="eyebrow">Infrastructure reporting</div>
+                <h3>Financeable operating data</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <article class="productPanel">
+          <div class="top">
+            <div class="icon">H₂</div>
+            <div>
+              <div class="eyebrow" style="color:var(--purple);">Productive infrastructure verification</div>
+              <h3 style="font-size:32px;">Green Energy Verification</h3>
+            </div>
+          </div>
+
+          <p>A verification system for renewable energy, hydrogen production, carbon-reduction support, and circular economic visibility — making productive infrastructure legible to funders, operators, and communities.</p>
+
+          <div class="feature"><span class="check">✓</span><span>Renewable-energy visibility from clean energy sources, metering, and operational records.</span></div>
+          <div class="feature"><span class="check">✓</span><span>Hydrogen production tracking connected to productive infrastructure and storage activity.</span></div>
+          <div class="feature"><span class="check">✓</span><span>Avoided-emissions and sustainability reporting based on clearly stated assumptions.</span></div>
+          <div class="feature"><span class="check">✓</span><span>Project-monitoring support for savings, uptime, revenue flows, and responsible settlement.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pilot" class="band">
+      <div class="container pilot">
+        <div class="pilotText">
+          <div class="sectionLabel">One Power Pilot</div>
+          <h2>Wind, solar, and wave energy inputs connected to hydrogen storage and verified reporting.</h2>
+          <p class="lead">In partnership with One Power, ResonanceDAO is developing a pilot architecture that links productive energy hardware with a Green Energy Verification layer for renewable input, hydrogen output, uptime, avoided-emissions assumptions, savings, and infrastructure reporting.</p>
+          <p>The goal is not to financialize climate claims prematurely. The goal is to make infrastructure performance legible enough for grants, financiers, public-sector partners, communities, and operators to trust the same operating record.</p>
+
+          <div class="tags">
+            <span class="tag">Wind input</span>
+            <span class="tag">Solar input</span>
+            <span class="tag">Wave input</span>
+            <span class="tag">Hydrogen storage</span>
+            <span class="tag">Verification dashboard</span>
+          </div>
+        </div>
+
+        <div class="energyFrame" aria-label="Animated Wind Solar Wave Hydrogen Verification frame">
+          <div class="sourceGrid">
+            <div class="source">
+              <div class="turbine" aria-hidden="true"></div>
+              <strong>Wind</strong>
+            </div>
+
+            <div class="source">
+              <div class="sun" aria-hidden="true"></div>
+              <strong>Solar</strong>
+            </div>
+
+            <div class="source">
+              <div class="waveIcon" aria-hidden="true"></div>
+              <strong>Wave</strong>
+            </div>
+          </div>
+
+          <div class="convergence">
+            <div class="stream s1"></div>
+            <div class="stream s2"></div>
+            <div class="stream s3"></div>
+            <div class="storage">
+              <div>
+                <strong>Hydrogen Storage</strong>
+                <span>Renewable-integrated production</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashCard">
+            <div class="dashTitle">
+              <span>Green Energy Verification Dashboard</span>
+              <span style="color:var(--green2);">Live record</span>
+            </div>
+
+            <div class="dashGrid">
+              <div class="dashMetric"><span>Input</span><strong>Verified</strong></div>
+              <div class="dashMetric"><span>Output</span><strong>Tracked</strong></div>
+              <div class="dashMetric"><span>Uptime</span><strong>Monitored</strong></div>
+              <div class="dashMetric"><span>Emissions</span><strong>Reported</strong></div>
+              <div class="dashMetric"><span>Funding</span><strong>Accountable</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="sectionLabel">How it works</div>
+        <h2>From energy capture to verified reporting.</h2>
+
+        <div class="flow">
+          <article class="flowCard">
+            <span class="num">01</span>
+            <div class="flowIcon">M</div>
+            <h3>Measure</h3>
+            <p>Capture renewable input, electrolyzer output, uptime, operational status, and project-level performance data.</p>
+          </article>
+
+          <article class="flowCard">
+            <span class="num">02</span>
+            <div class="flowIcon">V</div>
+            <h3>Verify</h3>
+            <p>Use attestations, bounded adapters, and governance-approved rules to validate claims before they influence payouts or reporting.</p>
+          </article>
+
+          <article class="flowCard">
+            <span class="num">03</span>
+            <div class="flowIcon">R</div>
+            <h3>Report</h3>
+            <p>Turn productive infrastructure activity into financier-ready dashboards, impact records, and community accountability reports.</p>
+          </article>
+
+          <article class="flowCard">
+            <span class="num">04</span>
+            <div class="flowIcon">S</div>
+            <h3>Settle</h3>
+            <p>Connect verified milestones to accountable settlement workflows, timelock release controls, and transparent funding records.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="band">
+      <div class="container partnerBox">
+        <div class="partnerGrid">
+          <div>
+            <div class="sectionLabel">What we enable</div>
+            <h2>Built for partners who need verified infrastructure records before scale.</h2>
+            <p class="lead">ResonanceDAO is designed for renewable-energy operators, development banks, public-sector agencies, NGOs, cooperatives, climate-finance programs, and institutional partners seeking auditable infrastructure outcomes.</p>
+          </div>
+
+          <div class="miniGrid">
+            <div class="mini">Renewable-energy pilots</div>
+            <div class="mini">Hydrogen and storage programs</div>
+            <div class="mini">Caribbean and island infrastructure</div>
+            <div class="mini">Grant and project-finance reporting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="funding">
+      <div class="container productWrap">
+        <div>
+          <div class="sectionLabel">Funding accountability layer</div>
+          <h2>Resonance Wallet and timelock controls for funding resources.</h2>
+          <p class="lead">Once infrastructure activity is measured and verified, funding resources can be connected to policy-based release controls, transparent approvals, auditable distribution, and milestone-linked reporting.</p>
+
+          <div class="productList">
+            <div class="productItem active">
+              <div class="icon">⏱</div>
+              <div>
+                <div class="eyebrow">Timelock for wallets</div>
+                <h3>Resonance Wallet</h3>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="icon">✓</div>
+              <div>
+                <div class="eyebrow">Accountable settlement</div>
+                <h3>Milestone-linked funding</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <article class="productPanel">
+          <div class="top">
+            <div class="icon">⏱</div>
+            <div>
+              <div class="eyebrow" style="color:var(--purple);">Funding resources</div>
+              <h3 style="font-size:32px;">Controlled release after verification</h3>
+            </div>
+          </div>
+
+          <p>A controlled settlement and reporting layer for programs that need policy-based capital movement, transparent approvals, auditable distribution, timelock release controls, and infrastructure-aligned payment flows.</p>
+
+          <div class="walletVisual">
+            <div class="timeline">
+              <div class="timelineStep">
+                <b>1</b>
+                <div>
+                  <strong>Verified milestone</strong>
+                  <span>Infrastructure data, attestations, and reporting records are reviewed.</span>
+                </div>
+              </div>
+
+              <div class="timelineStep">
+                <b>2</b>
+                <div>
+                  <strong>Governed queue</strong>
+                  <span>Approved wallet actions are queued with delay windows and policy checks.</span>
+                </div>
+              </div>
+
+              <div class="timelineStep">
+                <b>3</b>
+                <div>
+                  <strong>Timelock release</strong>
+                  <span>Funds release only after approval, dispute, cancel, and reporting paths are satisfied.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature"><span class="check">✓</span><span>Governance-approved transaction bundles are queued before release.</span></div>
+          <div class="feature"><span class="check">✓</span><span>Delay windows, approval thresholds, and cancel paths reduce treasury risk.</span></div>
+          <div class="feature"><span class="check">✓</span><span>Every wallet action can be tied to a program, milestone, attestation, and reporting trail.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="band">
+      <div class="container cta">
+        <div class="sectionLabel">Next step</div>
+        <h2>Build a more verifiable clean-energy operating record.</h2>
+        <p class="lead">Whether you are planning a renewable-energy pilot, hydrogen-storage program, climate-finance initiative, or public-sector infrastructure project, ResonanceDAO helps turn implementation activity into a more transparent and accountable system.</p>
+
+        <div class="buttons" style="justify-content:center;">
+          <a class="btn primary" href="mailto:info@measuretwice.xyz">info@measuretwice.xyz →</a>
+          <a class="btn secondary" href="#top">Back to top</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© ResonanceDAO / Measure Twice — Coordination infrastructure for circular economics, productive infrastructure, and community resilience.</div>
+  </footer>
+</body>
+</html>
