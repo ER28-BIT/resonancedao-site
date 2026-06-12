@@ -89,13 +89,14 @@
     }
 
     .brandLogo{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      object-fit:cover;
-      border:1px solid rgba(255,255,255,.16);
-      background:linear-gradient(135deg,var(--cyan),var(--purple));
-      box-shadow:0 0 34px rgba(103,232,249,.18);
+      width:255px;
+      height:255px;
+      border-radius:42px;
+      object-fit:contain;
+      border:0; 
+      border-radius:0; 
+      background:transparent; 
+      box-shadow:none; 
     }
 
     .brandFallback{
@@ -499,7 +500,15 @@
       height:auto;
       object-fit:cover;
     }
-
+.proofImg{ width:100%; 
+          min-height:320px; 
+          object-fit:contain; 
+          padding:8px; 
+          border-radius:24px; 
+          border:1px 
+            solid rgba(103,232,249,.12); 
+          background:#fff; 
+         }
     .fallback{
       padding:24px;
       color:var(--muted);
@@ -882,7 +891,7 @@
       <a class="brand" href="#top" aria-label="ResonanceDAO Green Energy Verification">
         <img
           class="brandLogo"
-          src="assets/resonancedao-logo.png"
+          src="/assets/ResonanceDAO_Concept3_HorizontalLockup_Color_Small.png"
           alt="ResonanceDAO logo"
           onerror="this.style.display='none';document.getElementById('brandFallback').hidden=false;"
         />
