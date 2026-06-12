@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Green Energy Verification | ResonanceDAO</title>
   <meta name="description" content="ResonanceDAO Green Energy Verification makes renewable input, hydrogen output, uptime, avoided emissions, savings, and infrastructure reporting legible for clean-energy pilots and funders." />
+  <link rel="icon" href="/assets/ResonanceDAO_Concept3_HorizontalLockup_Color_Small.png" type="image/png" />
 
   <style>
     :root{
@@ -58,6 +59,10 @@
       display:block;
     }
 
+    [hidden]{
+      display:none !important;
+    }
+
     .container{
       width:min(var(--max),calc(100% - 40px));
       margin:0 auto;
@@ -90,13 +95,13 @@
 
     .brandLogo{
       width:255px;
-      height:255px;
-      border-radius:42px;
+      max-width:255px;
+      height:42px;
       object-fit:contain;
-      border:0; 
-      border-radius:0; 
-      background:transparent; 
-      box-shadow:none; 
+      border:0;
+      border-radius:0;
+      background:transparent;
+      box-shadow:none;
     }
 
     .brandFallback{
@@ -109,6 +114,10 @@
       color:#050816;
       background:linear-gradient(135deg,var(--cyan),var(--purple2));
       box-shadow:0 0 34px rgba(103,232,249,.18);
+    }
+
+    .brandText{
+      display:none;
     }
 
     .brand small{
@@ -252,11 +261,8 @@
       margin-top:30px;
     }
 
-    .heroVisual{
-      min-height:520px;
-      position:relative;
-      overflow:hidden;
-      padding:26px;
+    .heroMedia{
+      padding:20px;
       border-radius:38px;
       border:1px solid var(--line);
       background:
@@ -264,88 +270,6 @@
         radial-gradient(circle at 72% 72%,rgba(167,139,250,.18),transparent 34%),
         linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
       box-shadow:var(--shadow);
-    }
-
-    .heroVisual:before{
-      content:"";
-      position:absolute;
-      inset:32px;
-      border-radius:50%;
-      border:1px solid rgba(103,232,249,.25);
-      box-shadow:
-        inset 0 0 46px rgba(103,232,249,.10),
-        0 0 80px rgba(167,139,250,.10);
-      animation:slowRotate 28s linear infinite;
-    }
-
-    .heroVisual:after{
-      content:"";
-      position:absolute;
-      width:300px;
-      height:300px;
-      left:50%;
-      top:44%;
-      transform:translate(-50%,-50%);
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(103,232,249,.22),rgba(167,139,250,.10),transparent 68%);
-      filter:blur(2px);
-    }
-
-    .heroOrb{
-      position:absolute;
-      left:50%;
-      top:44%;
-      z-index:2;
-      width:210px;
-      height:210px;
-      transform:translate(-50%,-50%);
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.18);
-      background:
-        radial-gradient(circle at 35% 26%,rgba(255,255,255,.30),transparent 20%),
-        radial-gradient(circle,rgba(103,232,249,.30),rgba(167,139,250,.22),rgba(8,17,31,.92));
-      box-shadow:0 0 100px rgba(103,232,249,.22);
-      font-size:54px;
-      font-weight:950;
-      letter-spacing:-.07em;
-    }
-
-    .heroMetricGrid{
-      position:absolute;
-      z-index:3;
-      left:24px;
-      right:24px;
-      bottom:24px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-    }
-
-    .metric{
-      min-height:102px;
-      padding:16px;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(5,8,22,.72);
-      backdrop-filter:blur(10px);
-    }
-
-    .metric p{
-      margin-bottom:6px;
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-weight:900;
-    }
-
-    .metric strong{
-      display:block;
-      color:var(--ink);
-      line-height:1.25;
-      font-size:15px;
     }
 
     .sectionLabel{
@@ -495,20 +419,47 @@
       box-shadow:0 22px 60px rgba(0,0,0,.22);
     }
 
+    .visualHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      padding:20px 20px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .visualHeader h3{
+      margin-bottom:0;
+    }
+
+    .status{
+      display:inline-flex;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(103,232,249,.08);
+      border:1px solid rgba(103,232,249,.22);
+      color:var(--cyan);
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
     .mediaImg{
       width:100%;
       height:auto;
       object-fit:cover;
     }
-.proofImg{ width:100%; 
-          min-height:320px; 
-          object-fit:contain; 
-          padding:8px; 
-          border-radius:24px; 
-          border:1px 
-            solid rgba(103,232,249,.12); 
-          background:#fff; 
-         }
+
+    .proofImg{
+      width:100%;
+      min-height:320px;
+      object-fit:contain;
+      padding:8px;
+      border-radius:24px;
+      border:1px solid rgba(103,232,249,.12);
+      background:#fff;
+    }
+
     .fallback{
       padding:24px;
       color:var(--muted);
@@ -523,6 +474,22 @@
       color:var(--ink);
       font-size:20px;
       margin-bottom:8px;
+    }
+
+    .fallbackGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .fallbackGrid div{
+      padding:13px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--ink);
+      font-weight:800;
     }
 
     .pilot{
@@ -625,6 +592,7 @@
       height:42px;
       display:grid;
       place-items:center;
+      margin:0 auto;
       border-radius:14px;
       color:#03111f;
       background:linear-gradient(135deg,var(--cyan),var(--purple2));
@@ -689,7 +657,7 @@
     }
 
     .assetNote{
-      margin-top:14px;
+      margin:14px 0 0;
       color:var(--muted);
       font-size:13px;
     }
@@ -723,10 +691,6 @@
       width:48px;
       height:48px;
       display:grid;
-      place-items:center;
-      margin-bottom:22px;
-      border-radius:16px;
-      border:1px solid rgba(103,232,:grid;
       place-items:center;
       margin-bottom:22px;
       border-radius:16px;
@@ -789,10 +753,6 @@
       font-size:14px;
     }
 
-    @keyframes slowRotate{
-      to{transform:rotate(360deg)}
-    }
-
     @keyframes drift{
       from{transform:translate3d(-1.5%,0,0) scale(1)}
       to{transform:translate3d(1.5%,1%,0) scale(1.04)}
@@ -808,6 +768,11 @@
         display:none;
       }
 
+      .brandLogo{
+        width:220px;
+        max-width:220px;
+      }
+
       .heroGrid,
       .productWrap,
       .pilot,
@@ -818,10 +783,6 @@
       .grid3,
       .flow{
         grid-template-columns:1fr 1fr;
-      }
-
-      .heroVisual{
-        min-height:470px;
       }
     }
 
@@ -850,31 +811,18 @@
         width:100%;
       }
 
+      .brandLogo{
+        width:180px;
+        max-width:180px;
+      }
+
       .grid3,
       .flow,
       .inputRow,
       .dashboardRow,
       .miniGrid,
-      .heroMetricGrid{
+      .fallbackGrid{
         grid-template-columns:1fr;
-      }
-
-      .heroMetricGrid{
-        position:relative;
-        left:auto;
-        right:auto;
-        bottom:auto;
-        margin-top:300px;
-      }
-
-      .heroOrb{
-        width:170px;
-        height:170px;
-        font-size:44px;
-      }
-
-      .heroVisual{
-        min-height:620px;
       }
 
       .partnerBox{
@@ -893,10 +841,10 @@
           class="brandLogo"
           src="/assets/ResonanceDAO_Concept3_HorizontalLockup_Color_Small.png"
           alt="ResonanceDAO logo"
-          onerror="this.style.display='none';document.getElementById('brandFallback').hidden=false;"
+          onerror="this.style.display='none';document.getElementById('brandFallback').hidden=false;document.getElementById('brandText').style.display='block';"
         />
         <span id="brandFallback" class="brandFallback" hidden>R</span>
-        <span>
+        <span id="brandText" class="brandText">
           ResonanceDAO
           <small>Green Energy Verification</small>
         </span>
@@ -934,24 +882,34 @@
       </div>
     </div>
 
-    <div class="heroVisual" aria-label="Green Energy Verification visual">
-      <div class="heroOrb">H₂</div>
+    <aside class="heroMedia visualCard" aria-label="Green Energy Verification flow">
+      <div class="visualHeader">
+        <div>
+          <div class="eyebrow">Hero visual</div>
+          <h3>Green Energy Verification Flow</h3>
+        </div>
+        <span class="status">Pilot-ready</span>
+      </div>
 
-      <div class="heroMetricGrid">
-        <div class="metric">
-          <p>Input</p>
-          <strong>Wind, solar, wave, and other renewable sources</strong>
-        </div>
-        <div class="metric">
-          <p>Output</p>
-          <strong>Hydrogen production and storage activity</strong>
-        </div>
-        <div class="metric">
-          <p>Record</p>
-          <strong>Verified reporting for partners and funders</strong>
+      <img
+        class="proofImg"
+        src="/assets/green_energy_production_proofs_flow_optimized.gif"
+        alt="Green Energy Verification flow from renewable input to productive hardware, telemetry, verification, reporting, settlement, and governance."
+        onerror="this.style.display='none';document.getElementById('heroFallback').hidden=false;"
+      />
+
+      <div id="heroFallback" class="fallback" hidden>
+        <strong>Green Energy Verification Flow</strong>
+        <p>Renewable input, productive hardware, telemetry, verification, reporting, settlement, and governance in one operating record.</p>
+        <div class="fallbackGrid">
+          <div>Renewable input</div>
+          <div>Hydrogen production</div>
+          <div>Telemetry + attestations</div>
+          <div>Verification engine</div>
+          <div>Reporting + wallet settlement</div>
         </div>
       </div>
-    </div>
+    </aside>
   </div>
 </section>
 
@@ -1047,21 +1005,15 @@
 
     <div class="windAssetFrame">
       <div class="visualCard">
-        <video
-          class="mediaImg"
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="assets/wind-solar-wave-hydrogen-verification.webp"
-          aria-label="Wind, solar, and wave renewable inputs flowing into hydrogen storage and a Green Energy Verification dashboard."
-        >
-          <source src="assets/wind-solar-wave-hydrogen-verification.webm" type="video/webm" />
-          <source src="assets/wind-solar-wave-hydrogen-verification.mp4" type="video/mp4" />
-        </video>
+        <img
+          class="mediaImg proofImg"
+          src="/assets/green_energy_production_proofs_flow_optimized.gif"
+          alt="Wind, solar, and wave renewable inputs flowing into hydrogen storage and a Green Energy Verification dashboard."
+          onerror="this.style.display='none';document.getElementById('windFallback').hidden=false;"
+        />
       </div>
 
-      <div class="systemDiagram" id="windFallback">
+      <div class="systemDiagram" id="windFallback" hidden>
         <div class="inputRow">
           <div class="inputNode">
             <div>
@@ -1114,7 +1066,7 @@
         </div>
       </div>
 
-      <p class="assetNote">Asset-ready frame: add <strong>assets/wind-solar-wave-hydrogen-verification.webm</strong>, <strong>.mp4</strong>, or <strong>.webp</strong> to replace the fallback with the moving visual.</p>
+      <p class="assetNote">Asset-ready frame: when the dedicated moving visual is available, add <strong>/assets/wind-solar-wave-hydrogen-verification.webm</strong>, <strong>.mp4</strong>, or <strong>.webp</strong> and replace the temporary verification-flow visual above.</p>
     </div>
   </div>
 </section>
@@ -1215,7 +1167,7 @@
       <div class="walletVisual visualCard">
         <img
           class="mediaImg"
-          src="assets/Diagram 1 — Timelock Release + Timelock Encryption  Diagram 2 — Bounded Dependencies.png"
+          src="/assets/Diagram%201%20%E2%80%94%20Timelock%20Release%20%2B%20Timelock%20Encryption%20%20Diagram%202%20%E2%80%94%20Bounded%20Dependencies.png"
           alt="Timelock Release, Timelock Encryption, and Bounded Dependencies wallet diagram."
           onerror="this.style.display='none';document.getElementById('walletFallback').hidden=false;"
         />
