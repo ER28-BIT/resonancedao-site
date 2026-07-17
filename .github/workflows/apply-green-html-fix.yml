@@ -19,10 +19,12 @@ jobs:
           ref: agent/fix-green-html
           fetch-depth: 0
 
-      - name: Apply prepared patch
+      - name: Ensure patch can be applied
         run: |
           git apply --check .github/green-html-fix.patch
-          git apply .github/green-html-fix.patch
+
+      - name: Apply prepared patch
+        run: git apply .github/green-html-fix.patch
 
       - name: Validate corrected markup
         run: |
@@ -51,12 +53,30 @@ jobs:
           print('HTML fix validation passed.')
           PY
 
+      - name: Verify file encodings and line endings
+        run: |
+          # ensure UTF-8 no BOM and LF-only line endings for the patch file
+          if file .github/green-html-fix.patch | grep -q "CRLF"; then
+            echo "CRLF line endings found in patch — please convert to LF" >&2
+            exit 1
+          fi
+          if head -c3 .github/green-html-fix.patch | od -An -t x1 | grep -q 'ef bb bf'; then
+            echo "BOM found in patch — remove BOM" >&2
+            exit 1
+          fi
+          echo "Encodings and line endings OK"
+
       - name: Commit corrected HTML
         run: |
-          rm .github/green-html-fix.patch
-          rm .github/workflows/apply-green-html-fix.yml
+          # remove only the applied patch (optional) and commit index.html
+          rm -f .github/green-html-fix.patch
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html .github
-          git commit -m "Fix malformed HTML and pilot visual markup"
-          git push origin HEAD:agent/fix-green-html
+          git add index.html
+          git status --porcelain
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Fix malformed HTML and pilot visual markup (automated)"
+            git push origin HEAD:agent/fix-green-html
+          fi
