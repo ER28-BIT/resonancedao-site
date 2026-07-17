@@ -32,7 +32,6 @@ jobs:
 
           path = Path('index.html')
           html = path.read_text(encoding='utf-8')
-
           html = html.replace('\n```\n', '\n')
 
           broken_visual = '''      <div class="visualCard">
@@ -45,7 +44,6 @@ jobs:
       </div>
 
       <div class="systemDiagram" id="windFallback" hidden>'''
-
           corrected_visual = '''      <div class="systemDiagram" aria-label="Wind, solar, and wave renewable inputs connected to hydrogen storage and verification reporting.">'''
 
           if broken_visual not in html:
@@ -67,11 +65,7 @@ jobs:
           from pathlib import Path
 
           html = Path('index.html').read_text(encoding='utf-8')
-          forbidden = [
-              '```',
-              'src="/assets/Wind-Solar-Wave\n',
-              'Asset-ready frame:',
-          ]
+          forbidden = ['```', 'src="/assets/Wind-Solar-Wave\n', 'Asset-ready frame:']
           for value in forbidden:
               if value in html:
                   raise SystemExit(f'Validation failed: found {value!r}')
@@ -92,6 +86,7 @@ jobs:
         run: |
           rm -f .github/green-html-fix.patch
           rm -f .github/workflows/apply-green-html-fix.yml
+          rm -f .github/trigger-green-html-fix.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html .github
