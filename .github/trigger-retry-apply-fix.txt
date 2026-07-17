@@ -1,0 +1,5 @@
+Trigger file to re-run Apply Green HTML Fix workflow
+
+This file was committed by GitHub Copilot to retrigger the workflow after fixing .github/green-html-fix.patch.
+
+Timestamp: 2026-07-17T03:30:00Z
