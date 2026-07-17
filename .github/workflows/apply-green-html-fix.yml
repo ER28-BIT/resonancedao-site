@@ -1,0 +1,62 @@
+name: Apply Green HTML Fix
+
+on:
+  push:
+    branches:
+      - agent/fix-green-html
+
+permissions:
+  contents: write
+
+jobs:
+  apply-fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/fix-green-html
+          fetch-depth: 0
+
+      - name: Apply prepared patch
+        run: |
+          git apply --check .github/green-html-fix.patch
+          git apply .github/green-html-fix.patch
+
+      - name: Validate corrected markup
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          html = Path('index.html').read_text(encoding='utf-8')
+          forbidden = [
+              '```',
+              'src="/assets/Wind-Solar-Wave\n',
+              'Asset-ready frame:',
+          ]
+          for value in forbidden:
+              if value in html:
+                  raise SystemExit(f'Validation failed: found {value!r}')
+
+          required = [
+              '<nav class="navLinks" aria-label="Primary navigation">',
+              '<div class="systemDiagram" aria-label="Wind, solar, and wave renewable inputs connected to hydrogen storage and verification reporting.">',
+              '</html>',
+          ]
+          for value in required:
+              if value not in html:
+                  raise SystemExit(f'Validation failed: missing {value!r}')
+
+          print('HTML fix validation passed.')
+          PY
+
+      - name: Commit corrected HTML
+        run: |
+          rm .github/green-html-fix.patch
+          rm .github/workflows/apply-green-html-fix.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github
+          git commit -m "Fix malformed HTML and pilot visual markup"
+          git push origin HEAD:agent/fix-green-html
