@@ -1,0 +1,60 @@
+diff --git a/index.html b/index.html
+--- a/index.html
++++ b/index.html
+@@ -872,7 +872,6 @@
+         </span>
+       </a>
+ 
+-```
+   <nav class="navLinks" aria-label="Primary navigation">
+     <a href="#why">Why it matters</a>
+     <a href="#products">Verification</a>
+@@ -884,7 +883,6 @@
+ 
+   <a class="btn primary" href="mailto:info@measuretwice.xyz">Start a conversation →</a>
+ </div>
+-```
+ 
+   </header>
+ 
+@@ -898,7 +896,6 @@
+           <p>Our focus is providing real-time market and infrastructure data: measuring what clean-energy assets produce, verifying the operating record, and turning that record into reporting that supports resilient financing, reinsurance, and scalable implementation.</p>
+           <p>Circularity is the way forward, and surplus renewable energy is our foundation for helping communities achieve it.</p>
+ 
+-```
+       <div class="buttons">
+         <a class="btn primary" href="#pilot">View pilot concept →</a>
+         <a class="btn secondary" href="#funding">See funding layer</a>
+@@ -1027,16 +1024,7 @@
+     </div>
+ 
+     <div class="windAssetFrame">
+-      <div class="visualCard">
+-        <img
+-          class="mediaImg proofImg"
+-          src="/assets/Wind-Solar-Wave
+-          alt="Wind, solar, and wave renewable inputs flowing into hydrogen storage and a Green Energy Verification dashboard."
+-          onerror="this.style.display='none';document.getElementById('windFallback').hidden=false;"
+-        />
+-      </div>
+-
+-      <div class="systemDiagram" id="windFallback" hidden>
++      <div class="systemDiagram" aria-label="Wind, solar, and wave renewable inputs connected to hydrogen storage and verification reporting.">
+         <div class="inputRow">
+           <div class="inputNode">
+             <div>
+@@ -1089,7 +1077,6 @@
+         </div>
+       </div>
+ 
+-      <p class="assetNote">Asset-ready frame: when the dedicated moving visual is available, add <strong>/assets/Wind-Solar-Wave</strong>, <strong>.mp4</strong>, or <strong>.webp</strong> and replace the temporary verification-flow visual above.</p>
+     </div>
+   </div>
+ </section>
+@@ -1219,7 +1206,6 @@
+     </div>
+   </div>
+ </section>
+-```
+ 
+   </main>
